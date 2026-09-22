@@ -136,7 +136,7 @@ class VectorRAGSystem:
         
     def _generar_respuesta(self, consulta: str, contexto: str) -> str:
         """Genera una respuesta basada en el contexto encontrado"""
-        promtp = ChatPromptTemplate.from_template(
+        prompt = ChatPromptTemplate.from_template(
             """Eres un experto asistente de helpdesk. Responde a la consulta del usuario
             basándote únicamente en el contexto proporcionado de la base de conocimiento.
             
@@ -156,7 +156,7 @@ class VectorRAGSystem:
 
         try:
             response = self.llm.invoke(prompt.format(consulta=consulta, contexto=contexto))
-            return response.content.strip()
+            return response.strip()
         except Exception as e:
             return f"Error generando respuesta: {str(e)}"
         
@@ -174,7 +174,7 @@ class VectorRAGSystem:
         total_contenido = 0
 
         for doc in documentos[:3]: #Evaluar top 3
-            contenido = doc.page_content_lower()
+            contenido = doc.page_content.lower()
             total_contenido += len(contenido.split())
 
             # Contar coincidencias de palabras clave

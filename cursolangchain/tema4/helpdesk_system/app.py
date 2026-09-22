@@ -100,12 +100,12 @@ def main():
 
         st.subheader("flujo del Sistema")
         st.text("""
-        1. Usuario ingresa su consulta
-        2. Clasificación automática
-        3. Búsqueda vectorial RAG
-        4. Evaluación de confianza
-        5. Escalado si es necesario
-        6. Respuesta final
+        1. 📝 Usuario envía consulta
+        2. 🤖 Clasificación automática
+        3. 🔍 Búsqueda vectorial RAG
+        4. 📊 Evaluación de confianza
+        5. 👨‍💼 Escalado si es necesario
+        6. ✅ Respuesta final
         """)
 
         st.subheader("Configuración")
@@ -131,16 +131,10 @@ def main():
         # Ejemplos de consultas
         with st.expander("Ejemplos de Consultas"):
             ejemplos = [
-                "No puedo acceder a mi cuenta.",
-                "Olvidé mi contraseña, ¿cómo la recupero?",
-                "El sistema está muy lento.",
-                "Necesito ayuda con la instalación del software.",
-                "¿Cómo puedo actualizar mi perfil?",
-                "Tengo un error al intentar guardar mis cambios.",
-                "Quiero saber el estado de mi solicitud.",
-                "El sistema me da un mensaje de error desconocido.",
-                "¿Cómo puedo contactar al soporte técnico?",
-                "Necesito asistencia para configurar mi correo electrónico."
+                "Error 500 en la aplicación",
+                "¿Cómo cancelo mi suscripción?",
+                "La aplicación va muy lenta",
+                "Problemas con la facturación"
             ]
             for ejemplo in ejemplos:
                 if st.button(f"{ejemplo}", key=f"ej_{ejemplo}"):

@@ -54,7 +54,8 @@ class HelpDeskGraph:
         confianza = state.get('confianza', 0.0)
 
         prompt = ChatPromptTemplate.from_template(
-            """Analiza esta consulta de helpdesk y decide si puede responderse automaticamente o necesita ser escalado
+            """Eres un experto asistente de helpdesk. 
+            Analiza esta consulta de helpdesk y decide si puede responderse automaticamente o necesita ser escalado
             CONSULTA DEL USUARIO: {consulta}
 
             INFORMACION ENCONTRADA EN LA BSAE DE CONOCIMIENTO: {contexto_rag}
@@ -170,22 +171,24 @@ class HelpDeskGraph:
     def decidir_desde_clasificación(self, state):
         """Decidir el siguiente paso basado en la clasificación"""
         categoria = state.get("categoria","escalada")  # Por defecto, escalar si no se puede clasificar
-        if categoria == "automática":
-            return self.generar_respuesta_final(state)
-        elif categoria == "escalada":
-            return self.preparar_escalado(state)
-        else:
-            return {
-                "historial": [
-                    f"Categoría desconocida: {categoria}. No se puede decidir el siguiente paso."
-                ]
-            }
+        return categoria
+        
+        #if categoria == "automática":
+        #    return "generar_respuesta_final"
+        #elif categoria == "preparar_escalado":        
+        #    return self.preparar_escalado(state)
+        #else:
+        #    return {
+        #        "historial": [
+        #            f"Categoría desconocida: {categoria}. No se puede decidir el siguiente paso."
+        #        ]
+        #    }
 
     def decidir_desde_humano(self, state):
         """Decidir si continuar o esperar respuesta humana """
         respuesta_humana = state.get("respuesta_humano")
         if respuesta_humana:
-            return self.generar_respuesta_final(state)
+            return "procesar_respuesta_humana"
         else:
             return "esperar"
 
