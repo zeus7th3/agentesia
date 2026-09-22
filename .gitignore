@@ -1,3 +1,8 @@
 .env
 env_agentes/
 __pycache__/
+
+# Bases de datos y checkpoints
+*.db
+*.sqlite3
+cursolangchain/tema4/helpdesk_system/docs/chroma_db/

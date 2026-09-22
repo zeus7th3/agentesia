@@ -1,0 +1,6 @@
+langchain_google_genain
+langchain_community
+langgraph
+langgraph-checkpoint-sqlite
+streamlit
+chromadb langchain-chroma

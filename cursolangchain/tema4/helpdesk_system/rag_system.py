@@ -1,4 +1,5 @@
-from langchain_community.vectorstores import Chroma
+#from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_classic.retrievers.multi_query import MultiQueryRetriever
 from pathlib import Path
